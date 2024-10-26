@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import styles from '../styles/register.module.css';
 
 export default function RegisterPage() {
@@ -33,7 +34,6 @@ export default function RegisterPage() {
             ...formData,
             [name]: value,
         });
-        // Clear error when user starts typing
         if (error) setError('');
     };
 
@@ -68,9 +68,7 @@ export default function RegisterPage() {
 
             if (response.ok) {
                 const data = await response.json();
-                // Show success message
                 alert('Registration successful! Redirecting to login page...');
-                // Redirect to login page after successful registration
                 router.push('/login');
             } else {
                 const errorData = await response.json();
@@ -97,7 +95,7 @@ export default function RegisterPage() {
                     </div>
                 )}
                 <form onSubmit={handleSubmit}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <input
                             type="text"
                             id="firstname"
@@ -210,7 +208,10 @@ export default function RegisterPage() {
                 </form>
                 <div className={styles.footer}>
                     <p>
-                        Already had an account? <a href="/login">Login here</a>
+                        Already have an account?{' '}
+                        <Link href="/login" className={styles.linkButton}>
+                            Click here to login
+                        </Link>
                     </p>
                 </div>
             </div>

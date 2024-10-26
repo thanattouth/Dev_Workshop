@@ -11,8 +11,6 @@ export default function LoginPage() {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const defaultImage = '../บวก.jpg';
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -27,17 +25,7 @@ export default function LoginPage() {
       ...formData,
       [name]: value,
     });
-    // Clear error when user starts typing
     if (error) setError('');
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      studentIdCard: file,
-    });
-    setSelectedFile(URL.createObjectURL(file));
   };
 
   const validateForm = () => {
@@ -46,14 +34,12 @@ export default function LoginPage() {
       return false;
     }
     
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError('รูปแบบอีเมลไม่ถูกต้อง');
       return false;
     }
     
-    // Password validation (8 digits)
     if (!/^\d{8}$/.test(formData.password)) {
       setError('รหัสผ่านต้องเป็นตัวเลข 8 หลัก');
       return false;
@@ -87,11 +73,8 @@ export default function LoginPage() {
         throw new Error(data.error || 'เข้าสู่ระบบไม่สำเร็จ');
       }
 
-      // Store user data in localStorage
       localStorage.setItem('userData', JSON.stringify(data.user));
-      
-      // Redirect to dashboard/home page after successful login
-      // router.push('/dashboard'); // Adjust this route as needed
+      // router.push('/dashboard');
       
     } catch (err) {
       setError(err.message || 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
@@ -110,7 +93,7 @@ export default function LoginPage() {
         <h2 className={styles.title}>Login</h2>
         
         {error && (
-          <div className={`${styles.errorMessage}`}>
+          <div className={styles.errorMessage}>
             {error}
           </div>
         )}
@@ -142,7 +125,10 @@ export default function LoginPage() {
 
           <div className={styles.footer}>
             <p>
-              Forgot password? <Link href="/register">Don't have an account?</Link>
+              Don't have an account?{' '}
+              <Link href="/register" className={styles.linkButton}>
+                Click here to register
+              </Link>
             </p>
           </div>
 
