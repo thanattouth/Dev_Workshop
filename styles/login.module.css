@@ -86,4 +86,13 @@
     height: auto;
     max-height: 350px;
   }
+
+  .errorMessage {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
   
