@@ -269,6 +269,87 @@ app.prepare().then(() => {
         }
     });
 
+    server.post('/api/login', async (req, res) => {
+        console.log('Login attempt received');
+        
+        try {
+            const { email, password } = req.body;
+    
+            // Validate input
+            if (!email || !password) {
+                return res.status(400).json({
+                    error: 'Email and password are required'
+                });
+            }
+    
+            // Check email format
+            if (!isValidEmail(email)) {
+                return res.status(400).json({
+                    error: 'Invalid email format'
+                });
+            }
+    
+            // Check password format (must be exactly 8 digits)
+            if (!isValidPassword(password)) {
+                return res.status(400).json({
+                    error: 'Invalid password format'
+                });
+            }
+    
+            // Query database for user
+            const [rows] = await pool.query(
+                `SELECT 
+                    customer_id,
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    university,
+                    age
+                FROM customer 
+                WHERE email = ?`,
+                [email]
+            );
+    
+            // Check if user exists
+            if (rows.length === 0) {
+                return res.status(401).json({
+                    error: 'Invalid email or password'
+                });
+            }
+    
+            const user = rows[0];
+    
+            // Check password (converting string password to integer for comparison)
+            if (parseInt(password) !== user.password) {
+                return res.status(401).json({
+                    error: 'Invalid email or password'
+                });
+            }
+    
+            // Successful login - return user data (excluding password)
+            const userData = {
+                customer_id: user.customer_id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                university: user.university,
+                age: user.age
+            };
+    
+            res.status(200).json({
+                message: 'Login successful',
+                user: userData
+            });
+    
+        } catch (error) {
+            console.error('Login error:', error);
+            res.status(500).json({
+                error: 'Internal server error'
+            });
+        }
+    });
+
     // Handle other Next.js routes
     server.all('*', (req, res) => handle(req, res));
 
