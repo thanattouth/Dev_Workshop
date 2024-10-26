@@ -1,0 +1,152 @@
+
+
+
+.h1Title {
+  width: auto; /* ปรับขนาดตามที่ต้องการ */
+  height: auto; /* ปรับขนาดตามที่ต้องการ */
+  width: 170px; /* กำหนดความกว้างเป็น 594px */
+  height: 68px; /* กำหนดความสูงเป็น 586px */
+  margin-bottom: 1px; /* เพิ่มระยะห่างด้านล่าง */
+  display: block; /* จัดให้เป็น block เพื่อให้อยู่กลาง */
+  text-align: center; /* จัดข้อความอยู่กลาง */
+  position: relative; /* ต้องมี position เพื่อใช้ z-index */
+  z-index: 1; /* ตั้งค่า z-index ให้สูงกว่ารูปภาพ */
+  
+}
+
+.container {
+  background-color: white;
+  border-radius: 0px;
+  padding: 20px;
+  margin: 20px; /* ลบ auto เพื่อให้ขนาดเต็ม */
+  max-width: 578px; /* ปรับความกว้างเป็น 578px */
+  height: 579px; /* ปรับความสูงเป็น 579px */
+
+
+  display: flex;
+  flex-direction: column; /* จัดแนวในแนวตั้ง */
+  align-items: center; /* จัดให้อยู่กลาง */
+  justify-content: center; /* จัดให้อยู่กลางในแนวตั้ง */
+  position: relative; /* ต้องมี position เพื่อใช้ z-index */
+  z-index: 1; /* ตั้งค่า z-index ให้สูงกว่ารูปภาพ */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6); /* เงา */
+}
+
+
+
+.inputField {
+  width: 244px; /* ปรับความกว้างเป็น 244px */
+  height: 37px; /* ปรับความสูงเป็น 37px */
+  padding: 10px; /* หากต้องการให้มี padding */
+  margin: 10px 5px; /* เปลี่ยน margin เป็น 5px เพื่อให้มีระยะห่างระหว่างฟิลด์ */
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  background-color: #D9D9D9; /* สีของกล่องข้อความ */
+}
+
+.inputField.university {
+  width: 506px; /* กำหนดความกว้างเป็น 506px */
+  height: 37px; /* กำหนดความสูงเป็น 37px */
+}
+
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  color: black; /* สีของตัวอักษร */
+    margin-bottom: 10px;
+    font-weight: 400; /* ตั้งค่าให้เป็น Regular */
+  
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: black; /* สีของตัวอักษร */
+  margin-bottom: 10px; /* ระยะห่างด้านล่าง */
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; /* เพิ่มระยะห่างจากฟิลด์อื่น ๆ */
+}
+
+.button {
+  width: 104px;
+  height: 37px;
+  background-color: #C63228;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #a51e21; /* เปลี่ยนสีเมื่อเลื่อนเมาส์ไปเหนือปุ่ม */
+}
+.footer {
+  margin-top: 10px; /* ระยะห่างด้านบน */
+  text-align: center; /* จัดให้เนื้อหาอยู่กลาง */
+  color: black; /* เปลี่ยนสีของข้อความเป็นสีดำ */
+  width: 100%; /* ให้ footer มีความกว้างเต็มที่ */
+}
+
+/* กฎสำหรับปุ่มเลือกไฟล์ */
+.fileUpload {
+  position: relative;
+  width: 100%; /* ให้เต็มความกว้าง */
+  margin: 20px 0;
+  display: flex; /* เปลี่ยนเป็น flexbox */
+  justify-content: center; /* จัดให้อยู่กลาง */
+  align-items: center; /* จัดให้อยู่กลางในแนวตั้ง */
+  text-align: center; /* จัดข้อความอยู่กลาง */
+  
+}
+
+.fileUpload input[type="file"] {
+  display: none; /* ซ่อน input file */
+}
+
+.fileUpload label {
+  display: flex; /* ใช้ flexbox เพื่อให้สามารถจัดตำแหน่งได้ง่าย */
+  flex-direction: column; /* แสดงผลเป็นคอลัมน์ */
+  align-items: center; /* จัดให้อยู่กลาง */
+  background-color: #D9D9D9; /* สีพื้นหลัง */
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์ */
+  overflow: hidden; /* ซ่อนส่วนเกินของภาพ */
+  padding: 10px; /* เพิ่ม padding เพื่อให้มีพื้นที่รอบๆ */
+  width: 250px; /* กำหนดความกว้างเป็น 594px */
+  height: 148px; /* กำหนดความสูงเป็น 586px */
+}
+
+.fileUpload img {
+  width: auto; /* ให้ภาพรักษาขนาดจริง */
+  height: auto; /* รักษาอัตราส่วนของภาพ */
+  max-width: 250px; /* จำกัดความกว้างของภาพ */
+  max-height: 130px; /* จำกัดความสูงของภาพ */
+}
+
+.topLeftImage {
+  position: absolute;
+  top: 0px; /* ระยะห่างจากขอบด้านบน */
+  left: 0%; /* ระยะห่างจากขอบด้านซ้าย */
+  width: 350px; /* ปรับขนาดรูปภาพตามที่ต้องการ */
+  height: auto;
+  max-height: 350px; /* จำกัดความสูงของภาพ */
+}
+
+.bottomRightImage { /* เปลี่ยนชื่อคลาสให้เหมาะสม */
+  position: fixed; /* ใช้ position: fixed เพื่อให้ภาพอยู่ตลอดที่มุมขวาล่าง */
+  bottom: 0; /* ระยะห่างจากขอบล่าง */
+  right: 0; /* ระยะห่างจากขอบขวา */
+  width: 350px; /* ปรับขนาดรูปภาพตามที่ต้องการ */
+  height: auto; /* รักษาสัดส่วนของภาพ */
+  max-height: 350px; /* จำกัดความสูงของภาพ */
+
+}
+
